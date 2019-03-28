@@ -41,6 +41,44 @@ namespace libaccefp {
       // TODO: Add as necessary
     };
 
+    /*! \enum ElecScreenType
+     *  \ingroup TODO:ADD_GROUP
+     * 
+     *  \brief Enumerator for type of electrostatic screening to use
+     *         when calculating electrostatic interaction.
+     * 
+     *  \details TODO
+     * 
+     *  \author Bryce M. Westheimer
+     * 
+     *  \date Mar 28, 2019
+     * 
+     */ 
+    enum class ElecScreenType {
+      None,
+      Eponential
+      // TODO: Add as necessary
+    };
+
+    /*! \enum PolScreenType
+     *  \ingroup TODO:ADD_GROUP
+     * 
+     *  \brief Enumerator for type of polarization screening to use
+     *         when calculating polarization interaction.
+     * 
+     *  \details TODO
+     * 
+     *  \author Bryce M. Westheimer
+     * 
+     *  \date Mar 28, 2019
+     * 
+     */ 
+    enum class PolScreenType {
+      None,
+      Tang_Toenis
+      // TODO: Add as necessary
+    };
+
     // Typedefs for distributed multipole moments
     // Storage is only for symmetry-unique elements
     typedef std::array<double, 3> dipole_moment;
@@ -62,7 +100,8 @@ namespace libaccefp {
      *        for eventual addition of other wave functions (e.g. ROHF)
      * 
      *  \note All members are restricted to public/protected access because the EFMO class extends this
-     *        class and needs access to all members.
+     *        class and assumes access to all members. Should be modified to move as much as possible to 
+     *        private access level.
      * 
      *  \author Bryce M. Westheimer
      * 
@@ -76,7 +115,7 @@ namespace libaccefp {
 
       /***** Constructor(s) and Destructor(s) *****/
 
-        // Default constructor. Assume localization method is Edmiston-Ruedenberg and all parameters turned on (dispersion, charge-transfer, etc.)
+        // Default constructor. Assumes localization method is Edmiston-Ruedenberg and all parameters turned on (dispersion, charge-transfer, etc.)
         Efp();
 
         // TODO: Etc.
@@ -107,20 +146,20 @@ namespace libaccefp {
 
       /***** Effective Potential flags *****/
 
-        // Multipole order for DMA
-        // TODO
+        // Multipole order for DMA (Default is up to hexapoles)
+        int multipole_order_ = 4;
 
         // Electrostatic screening
-        // TODO
+        ElecScreenType elec_screening_    = ElecScreenType::None;
 
         // Polarization screening 
-        // TODO
+        PolScreenType pol_screening_      = PolScreenType::None;
 
-        // Valence-Virtual-Orbital flag for Charge-Transfer
-        // TODO
+        // Valence-Virtual-Orbital flag for Charge-Transfer 
+        bool ct_use_vvos_                 = true;
 
         // Use Bond-midpoints in DMA along with atom centers
-        // TODO
+        bool dma_use_midpoints_           = true;
 
         // Boolean flags for including each term
         // Default: All terms included
@@ -132,7 +171,10 @@ namespace libaccefp {
 
       /***** Effective Potential parameters *****/
         
-        // Multipole moments
+        // Expansion centers
+        dtl::math::Vector< std::array<double, 3> >    centers_;
+
+        // DMA electrostatic parameters
         dtl::math::Vector<double>                   monopoles_;
         dtl::math::Vector<dipole_moment>            dipoles_;
         dtl::math::Vector<quadrupole_moment>        quadrupoles_;

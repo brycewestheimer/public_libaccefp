@@ -1,14 +1,14 @@
 /*
- * write_efp.cpp
+ * read_efp.cpp
  * 
  * Copied: Mar 28, 2019
  * Author: Bryce M. Westheimer
  * 
- * Description: Implementation file for write_efp.hpp
+ * Description: Implementation file for read_efp.hpp
  * 
  */
 
-#include "write_efp.hpp"
+#include "read_efp.hpp"
 
 namespace libaccefp {
 

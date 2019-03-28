@@ -133,21 +133,21 @@ namespace libaccefp {
       /***** Effective Potential parameters *****/
         
         // Multipole moments
-        dtl::Vector<double>             monopoles_;
-        std::Vector<dipole_moment>      dipoles_;
-        std::Vector<quadrupole_moment>  quadrupoles_;
-        dtl::Vector<hexapole_moment>    hexapoles_;
-        dtl::Vector<octopole_moment>    octopoles_;
+        dtl::math::Vector<double>                   monopoles_;
+        dtl::math::Vector<dipole_moment>            dipoles_;
+        dtl::math::Vector<quadrupole_moment>        quadrupoles_;
+        dtl::math::VectorVector<hexapole_moment>    hexapoles_;
+        dtl::math::VectorVector<octopole_moment>    octopoles_;
         
         // Polarizability tensors
-        dtl::Vector<polarizability_tensor> static_polarizability_tensors_;
+        dtl::math::Vector<polarizability_tensor> static_polarizability_tensors_;
 
         // Dynamic polarizability tensors for dispersion
-        dtl::Vector<polarizability_tensor> dynamic_polarizability_tensors_;
+        dtl::math::Vector<polarizability_tensor> dynamic_polarizability_tensors_;
 
         // Localized Molecular Orbital parameters
         LocalizationMethod localization_method_ = LocalizationMethod::Edmiston_Ruedenberg;
-        dtl::Matrix<double> lmo_coefficients_;
+        dtl::math::Matrix<double> lmo_coefficients_;
 
         // TODO: Etc.
 

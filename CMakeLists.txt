@@ -205,7 +205,6 @@ INCLUDE_DIRECTORIES(
                      ${MATHLIB_INCLUDE_PATH}
                      ${PROJECT_SOURCE_DIR}/src/
                      ${CUDA_TOOLKIT_INCLUDE}
-#                    ${PROJECT_SOURCE_DIR}/src/externals
                      ${MPI_CXX_INCLUDE_PATH}
                      ) 
 

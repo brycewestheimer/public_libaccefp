@@ -12,8 +12,8 @@
 #define LIBACCEFP_INCLUDE_METHODS_EFP_HPP_
 
 #include <dtl.hpp>        // Distributed vectors and matrices
-#include <libaccqc.hpp>   // WavefnType classes
-#include <libcfrag.hpp>   // Fragment class
+#include <libaccqc.hpp>   // WavefnType class(es)
+#include <libcfrag.hpp>   // Fragment class(es)
 
 #include <array>
 #include <functional>     // reference_wrapper<>
@@ -109,7 +109,7 @@ namespace libaccefp {
      * 
      */ 
     template<class libaccqc::wavefunctions::WavefnType>
-    class Efp : public libfrag::methods::Fragment<libaccqc::wavefunctions::WavefnType> {
+    class Efp : public libcfrag::methods::Fragment<libaccqc::wavefunctions::WavefnType> {
 
       public:
 
@@ -143,6 +143,10 @@ namespace libaccefp {
         void generate_distributed_multipoles();
 
       /***** Protected Member Variables *****/
+
+      /***** General fragment variables *****/
+
+        // TODO: MPI params, etc.
 
       /***** Effective Potential flags *****/
 
